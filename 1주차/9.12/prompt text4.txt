@@ -1,0 +1,60 @@
+1.
+
+다음은 노래 가사야. 노래 가사에서 랜덤하게 단어 10개를 뽑아줘
+
+The long and winding road That leads to your door Will never disappear I've seen that road before It always leads me here Lead me to you door The wild and windy night That the rain washed away Has left a pool of tears Crying for the day Why leave me standing here? Let me know the way Many times I've been alone And many times I've cried Anyway, you'll never know The many ways I've tried And still they lead me back To the long winding road You left me standing here A long, long time ago Don't leave me waiting here Lead me to your door But still they lead me back To the long winding road You left me standing here A long, long time ago Don't keep me waiting here Lead me to your door Yeah, yeah, yeah, yeah
+
+
+
+2.
+
+다음은 노래 가사야. 노래 가사에서 랜덤하게 단어 10개를 뽑아줘
+
+노래 가사와 함께 한국어 의미를 같이 표기해줘
+
+
+
+3.
+다음은 노래 가사야. 노래 가사에서 랜덤하게 단어 10개를 뽑아줘
+
+노래 가사와 함께 한국어 의미를 같이 표기해줘
+
+유사어도 같이 표기해줘
+
+추출한 단어로 새로운 문장을 만들어줘
+
+
+4.
+
+다음은 노래 가사야. 노래 가사에서 랜덤하게 단어 10개를 뽑아서 테이블로 만들어줘.
+
+노래 가사와 함께 한국어 의미를 같이 표기해줘
+
+유사어도 같이 표기해줘
+
+추출한 단어로 새로운 문장을 만들어줘
+
+테이블의 열은 단어, 의미, 유사어, 문장으로 해 줘.
+
+
+5.
+
+다음은 노래 가사야. 노래 가사에서 랜덤하게 단어 10개를 뽑아줘
+
+노래 가사와 함께 한국어 의미를 같이 표기해줘
+
+유사어도 같이 표기해줘
+
+추출한 단어로 새로운 문장을 만들어줘
+
+출력 포맷은 다음 JSON 포맷으로 작성해줘
+"""
+[{
+"num": 1,
+"word": "",
+"korean": "",
+"synonym": "",
+"example": "",
+},
+...]
+"""
