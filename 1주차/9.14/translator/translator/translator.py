@@ -8,9 +8,7 @@ from datetime import datetime
 import pynecone as pc
 from pynecone.base import Base
 
-
-# openai.api_key = "<YOUR_OPENAI_API_KEY>"
-openai.api_key = "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"
+openai.api_key = "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"
 
 
 parallel_example = {
