@@ -1,10 +1,14 @@
-import os
-import openai
+import json
 import reflex as rx
+from langchain.chat_models import ChatOpenAI
 
-# openai.api_key = os.environ['OPENAI_API_KEY']
-with open("project_data_카카오싱크.txt") as f:
+from langchain.llms import OpenAI
+from langchain.schema import HumanMessage, SystemMessage, AIMessage
+
+with open("chatbot/project_data_카카오싱크.txt") as f:
     pre_load_data = f.read()
+    f.close()
+
 
 class QA(rx.Base):
     question: str
@@ -28,28 +32,23 @@ class State(rx.State):
             return
 
         messages = [
-            {"role": "system", "content": "You are a friendly chatbot."}
+            SystemMessage(content="You are a friendly chatbot."),
+            HumanMessage(content="카카오 싱크에 대해 설명해줘"),
+            AIMessage(content=pre_load_data),
         ]
 
         for qa in self.chats[self.current_chat][1:]:
-            messages.append({"role": "user", "content": qa.question})
-            messages.append({"role": "assistant", "content": qa.answer})
+            messages.append(HumanMessage(content=qa.question))
+            messages.append(AIMessage(content=qa.answer))
 
-        messages.append({"role": "user", "content": self.question})
+        messages.append(HumanMessage(content=self.question))
+        llm = ChatOpenAI(temperature=1)
+        session = llm(messages)
 
-        session = openai.ChatCompletion.create(
-            model=os.getenv("OPENAI_MODEL", "gpt-3.5-turbo"),
-            messages=messages,
-            stop=None,
-            temperature=1,
-            stream=True,
-        )
         qa = QA(question=self.question, answer="")
         self.chats[self.current_chat].append(qa)
 
-        for item in session:
-            if hasattr(item.choices[0].delta, "content"):
-                answer_text = item.choices[0].delta.content
-                self.chats[self.current_chat][-1].answer += answer_text
-                self.chats = self.chats
-                yield
+        answer_text = session.content
+        self.chats[self.current_chat][-1].answer += answer_text
+        self.chats = self.chats
+        yield
